@@ -1,0 +1,48 @@
+<html>
+	<head>
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
+		<script type="text/javascript">
+			jQuery(document).ready(function($){
+				var my_price = "9.95";
+				$("#custom_size").change(function(){
+					switch($(this).val()){
+						case "S":
+						my_price = "9.95";
+						break;
+						case "M":
+						my_price = "11.95";
+						break;
+						case "L":
+						my_price = "13.95";
+						break;
+						default:
+						my_price = "9.95";
+					}
+					$("#my_price").text("$"+my_price);
+				});
+				function javascript_price_validation(){
+					return true;
+				};
+			});
+		</script>
+	</head>
+	<body>
+		{exp:cartthrob:add_to_cart_form
+			title="My Product"
+			price="9.95"
+			allow_user_price = "yes"
+			onsubmit="javascript_price_validation()"
+			return="template_group/template"}
+				T-Shirt name: My Custom Tee<br />
+				Quantity: <input type="text" name="quantity" size="5" value="1" /> <br />
+				Price: <span id="my_price">$9.95</span><br />
+				Size:<select id="custom_size" name="item_options[custom_size]">
+						<option value="S">Small</option>
+						<option value="M">Medium</option>
+						<option value="L">Large</option>
+					</select><br />
+				<input type="hidden" name="price" value="9.95">
+				<input type="submit" value="Add to Cart">
+		{/exp:cartthrob:add_to_cart_form}
+	</body>	
+</html>
